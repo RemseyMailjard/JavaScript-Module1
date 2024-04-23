@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meal Order Total Calculation</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .container { padding: 20px; }
+        h2 { color: #333; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to Our Meal Calculator</h1>
+        <h2>Selected Meals and Prices:</h2>
+        <ul id="mealList"></ul>
+        <p><strong>Total Price (before taxes):</strong> $<span id="totalPrice"></span></p>
+        <p><strong>Total Price (including 8% tax):</strong> $<span id="totalPriceTax"></span></p>
+    </div>
+
+    <script>
+        // Meal prices
+        let priceMeal1 = 20.30;
+        let priceMeal2 = 15;
+        let priceMeal3 = 10;
+
+        // Total calculation
+        let total = priceMeal1 + priceMeal2 + priceMeal3;
+
+        // Tax calculation
+        let taxes = 0.08; // 8%
+        let totalIncludingTaxes = total * (1 + taxes);
+
+        // Display the meals and prices
+        let meals = [
+            {name: "Pizza", price: priceMeal1},
+            {name: "Sushi", price: priceMeal2},
+            {name: "Filibertos", price: priceMeal3}
+        ];
+
+        let mealList = document.getElementById('mealList');
+        let totalPrice = document.getElementById('totalPrice');
+        let totalPriceTax = document.getElementById('totalPriceTax');
+
+        meals.forEach(meal => {
+            let listItem = document.createElement('li');
+            listItem.textContent = `${meal.name}: $${meal.price.toFixed(2)}`;
+            mealList.appendChild(listItem);
+        });
+
+        // Display totals
+        totalPrice.textContent = total.toFixed(2);
+        totalPriceTax.textContent = totalIncludingTaxes.toFixed(2);
+    </script>
+</body>
+</html>
